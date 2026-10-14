@@ -55,16 +55,7 @@ d.metric("Result", student["Result"])
 
 st.write("**Subject-wise marks**")
 marks = pd.DataFrame({"Subject": subjects, "Marks": [int(student[s]) for s in subjects]})
-import matplotlib.pyplot as plt
-
-fig, ax = plt.subplots()
-ax.bar(marks["Subject"], marks["Marks"])
-ax.set_title("Subject-wise marks")
-ax.set_ylabel("Marks")
-ax.tick_params(axis="x", rotation=45)
-fig.tight_layout()
-st.pyplot(fig)
-plt.close(fig))
+st.bar_chart(marks.set_index("Subject"))
 
 st.subheader("Average marks by subject")
 averages = pd.DataFrame({"Subject": subjects, "Average marks": [df[s].mean() for s in subjects]})
